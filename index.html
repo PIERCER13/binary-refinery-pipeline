@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="piercer" />
+  <title>Piercer Binary Refinery Pipeline</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Piercer Binary Refinery Pipeline</h1>
+      <p class="subtitle">Encadeie transformações (Base64, Hex, XOR, ROT13, URL, Regex, Strings) em tempo real</p>
+    </div>
+    <button type="button" class="btn btn-primary" id="btnCopyOut">Copiar Saída Final</button>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <h2>Entrada Bruta</h2>
+      <textarea id="pipeIn" rows="8">SGVsbG8gUGllcmNlciEgaHR0cHM6Ly9naXRodWIuY29t</textarea>
+
+      <h2 style="margin-top:14px;">Adicionar Etapa ao Pipeline</h2>
+      <div class="row-2">
+        <select id="opType">
+          <option value="b64dec">Base64 Decode</option>
+          <option value="b64enc">Base64 Encode</option>
+          <option value="hexdec">Hex → Texto</option>
+          <option value="hexenc">Texto → Hex</option>
+          <option value="urldec">URL Decode</option>
+          <option value="urlenc">URL Encode</option>
+          <option value="rot13">ROT13</option>
+          <option value="xor">XOR (Chave Hex/Texto)</option>
+          <option value="regex">Regex Extract</option>
+          <option value="strings">Extrair Strings (≥4)</option>
+        </select>
+        <input type="text" id="opArg" placeholder="Argumento (ex: 5A, https?://\S+)" />
+      </div>
+      <button type="button" class="btn btn-primary" id="btnAddOp" style="margin-top:8px;">+ Adicionar Etapa</button>
+
+      <div id="stageList" class="stage-list"></div>
+    </section>
+
+    <section class="card">
+      <h2>Saída Final do Pipeline</h2>
+      <pre id="pipeOut" class="code-out"></pre>
+    </section>
+  </main>
+  <script src="./piercer_i18n.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
